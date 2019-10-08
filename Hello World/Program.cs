@@ -11,6 +11,7 @@ namespace Hello_World
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World of C#!");
+            Console.Beep(1000, 2000);
         }
     }
 }
