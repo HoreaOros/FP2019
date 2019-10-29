@@ -1,20 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Diagnostics;
+﻿
+
+using System;
+
+namespace MyNameSpace
+{
+    class T { }
+}
+
 namespace _2210
 {
     enum Day
     {
-        Luni,
+        Luni = 1,
         Marti,
         Miercuri, 
         Joi,
         Vineri,
         Sambata,
-        Duminica
+        Duminica = 0
     }
     class Program
     {
@@ -24,18 +27,18 @@ namespace _2210
 
             //n = GetIntegerFromConsole();
 
-
+            MyNameSpace.T t = new MyNameSpace.T();
 
             //Console.WriteLine("Suma cifrelor numarului: {0}", SumaCifre(n));
 
 
             string line;
-            Console.WriteLine("Introduceti ziua saptamanii: ");
-            line = Console.ReadLine();
+            System.Console.WriteLine("Introduceti ziua saptamanii: ");
+            line = System.Console.ReadLine();
 
             Day zi;
 
-            zi = (Day)Enum.Parse(typeof(Day), line);
+            zi = (Day)System.Enum.Parse(typeof(Day), line);
 
             //if(zi == Day.Luni)
             //    Console.WriteLine("A inceput o noua saptamana");
@@ -70,7 +73,7 @@ namespace _2210
 
         }
 
-        private static int SumaCifre(int n)
+        static int SumaCifre(int n)
         {
             if (n == 0)
                 return 0;
