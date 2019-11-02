@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1572677678 source:/home/nq/FP2019/Convertor/Convertor.cpp
+	"Convertor.hpp"
+	<iostream>
+
+1572677678 /home/nq/FP2019/Convertor/Convertor.hpp
+	<string>
+
+1572678673 source:/home/nq/FP2019/Convertor/ConvertorTester.cpp
+	"ConvertorTester.hpp"
+
+1572678124 /home/nq/FP2019/Convertor/ConvertorTester.hpp
+	<iostream>
+	<string>
+	<vector>
+	"Convertor.hpp"
+
+1572678740 source:/home/nq/FP2019/Convertor/main.cpp
+	<iostream>
+	"Convertor.hpp"
+	"ConvertorTester.hpp"
+

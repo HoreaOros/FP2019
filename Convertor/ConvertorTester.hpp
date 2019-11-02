@@ -26,6 +26,7 @@ private:
     void VerifyBase();
     void ToUpperCase();
     void ReverseString();
+    void ReturnProcedures();
 
     // base conversions
         // integer parts only

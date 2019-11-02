@@ -20,6 +20,7 @@ public:
     static bool VerifyBase(std::string const & anyNumber, uint8_t const & anyBase);
     static std::string ToUpperCase(std::string& str);
     static void ReverseString(std::string& str);
+    static std::string ReturnProcedures(std::string integerPart, std::string fractionalPart, uint8_t fractionalDigits, bool comma);
 
     // base conversions
         // integer parts only

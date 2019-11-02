@@ -153,6 +153,27 @@ void Convertor::ReverseString(std::string& str)
     }
 }
 
+std::string Convertor::ReturnProcedures(std::string integerPart, std::string fractionalPart, uint8_t fractionalDigits, bool comma)
+{
+    // just concatenate the two parts
+            // handle the "." type of input, the "0.0" type of results
+            // and the results such as "12345." -> "12345" when 0 fractional digits are asked for
+        if(integerPart == "" && fractionalPart == "")
+            return std::string{"0.0"};
+        else if(fractionalPart == "" && fractionalDigits > 0)
+        {
+            for(uint8_t i = 0; i < fractionalDigits; i++)
+                fractionalPart += "0";
+            // continue and use the normal return, to not rewrite code
+        }
+        else if(fractionalPart == "")
+        {
+            return integerPart;
+        }
+            // and the "normal" input
+        return (integerPart + ( (comma)? "." : "" ) + fractionalPart);
+}
+
 std::string Convertor::DecToAnyInteger(std::string& decimal, uint8_t const & anyBase)
 {
     if(anyBase < 37)
@@ -203,7 +224,7 @@ std::string Convertor::AnyToDecInteger(std::string& anyNumber, uint8_t const & a
 
 std::string Convertor::DecToAnyFractional(std::string& decimalFractional, uint8_t const & anyBase, uint8_t const & fractionalDigits)
 {
-    if(anyBase < 37 && VerifyBase(decimalFractional, 10))
+    if(anyBase < 37 && VerifyBase(decimalFractional, 10) && fractionalDigits > 0)
     {
         ToUpperCase(decimalFractional);
 
@@ -236,7 +257,7 @@ std::string Convertor::DecToAnyFractional(std::string& decimalFractional, uint8_
 
 std::string Convertor::AnyToDecFractional(std::string& anyFractional, uint8_t const & anyBase, uint8_t const & fractionalDigits)
 {
-    if(anyBase < 37 && VerifyBase(anyFractional, anyBase))
+    if(anyBase < 37 && VerifyBase(anyFractional, anyBase) && fractionalDigits > 0)
     {
         ToUpperCase(anyFractional);
 
@@ -270,7 +291,7 @@ std::string Convertor::AnyToDecFractional(std::string& anyFractional, uint8_t co
 
 std::string Convertor::DecToAnyFloat(std::string& decimalFloat, uint8_t const & anyBase, uint8_t const & fractionalDigits)
 {
-    if(anyBase > 0 && anyBase < 37 && VerifyBase(decimalFloat, 10))
+    if(anyBase > 0 && anyBase < 37)
     {
         std::string integerPart{};
         std::string fractionalPart{};
@@ -298,19 +319,14 @@ std::string Convertor::DecToAnyFloat(std::string& decimalFloat, uint8_t const & 
         }
         fractionalPart = DecToAnyFractional(fractionalPart, anyBase, fractionalDigits);
 
-        // finally, just concatenate the two parts
-            // handle the "." type of input
-        if(integerPart == "" && fractionalPart == "")
-            return std::string{"0.0"};
-            // and the "normal" input
-        return (integerPart + ( (comma)? "." : "" ) + fractionalPart);
+        return ReturnProcedures(integerPart, fractionalPart, fractionalDigits, comma);
      }
      return std::string{};
 }
 
 std::string Convertor::AnyToDecFloat(std::string& anyFloat, uint8_t const & anyBase, uint8_t const & fractionalDigits)
 {
-    if(anyBase > 0 && anyBase < 37 && VerifyBase(anyFloat, anyBase))
+    if(anyBase > 0 && anyBase < 37)
     {
         std::string integerPart{};
         std::string fractionalPart{};
@@ -337,14 +353,7 @@ std::string Convertor::AnyToDecFloat(std::string& anyFloat, uint8_t const & anyB
         }
         fractionalPart = AnyToDecFractional(fractionalPart, anyBase, fractionalDigits);
 
-        std::cout << integerPart << " + " << fractionalPart << " -- ";
-
-        // finally, just concatenate the two parts
-            // handle the "." type of input
-        if(integerPart == "" && fractionalPart == "")
-            return std::string{"0.0"};
-            // and the "normal" input
-        return (integerPart + ( (comma)? "." : "" ) + fractionalPart);
+        return ReturnProcedures(integerPart, fractionalPart, fractionalDigits,comma);
      }
     return std::string{};
 }

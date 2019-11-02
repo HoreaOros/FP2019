@@ -32,6 +32,10 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Convertor.cpp" />
+		<Unit filename="Convertor.hpp" />
+		<Unit filename="ConvertorTester.cpp" />
+		<Unit filename="ConvertorTester.hpp" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
