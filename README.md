@@ -6,7 +6,8 @@ Done projects:
   - primality test
   
  TO-DO projects:
-  - BCD - Dec convertor
+  - BCD <-> Dec convertor
+  - Excess <-> Dec convertor
   
  Known bugs:
   - Base conversion: introducing input without comma to DecToAnyFloat() or AnyToDecFloat() will fail to put a comma in the output
