@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1572951691 source:/home/nq/FP2019/BCD/BCD.cpp
+	"BCD.hpp"
+
+1572953443 /home/nq/FP2019/BCD/BCD.hpp
+	<iostream>
+	<string>
+	<vector>
+
+1572952857 source:/home/nq/FP2019/BCD/main.cpp
+	<iostream>
+	"BCD.hpp"
+	"TestBCD.hpp"
+
+1572952662 source:/home/nq/FP2019/BCD/TestBCD.cpp
+	"TestBCD.hpp"
+
+1572952663 /home/nq/FP2019/BCD/TestBCD.hpp
+	<vector>
+	<string>
+	"BCD.hpp"
+
